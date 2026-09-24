@@ -4,6 +4,7 @@ dotenv.config();
 import connectDB from "./config/db.js";
 import app from "./app.js";
 import redisClient from "./config/redis.js";
+import { startReservationExpiryWorker } from "./workers/reservationExpiry.worker.js";
 
 const PORT = process.env.PORT || 5000;
 
@@ -28,3 +29,4 @@ const startServer = async () => {
 };
 
 startServer();
+startReservationExpiryWorker();
